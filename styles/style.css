@@ -17,10 +17,27 @@
   border-radius: 8px;
 }
 
-/* 限制左侧最大宽度 */
+/* 左侧栏：30%宽度，有范围限制 */
 .image-section {
+  flex: 0 0 30%;
+  min-width: 100px;   /* 最小宽度 */
+  max-width: 300px;  /* 最大宽度 */
   padding-right: 40px;
-  max-width: 100px;
+}
+
+/* 分割线样式 */
+.divider {
+  width: 2px;                    /* 分割线宽度 */
+  background: #e0e0e0;           /* 分割线颜色 */
+  margin: 0 20px;                /* 左右间距 */
+  border-radius: 1px;           /* 圆角（可选） */
+}
+
+/* 移动端：隐藏分割线，改为单栏布局 */
+@media (max-width: 768px) {
+  .divider {
+    display: none;
+  }
 }
 
 /* 移动端：小于768px时改为单栏 */
