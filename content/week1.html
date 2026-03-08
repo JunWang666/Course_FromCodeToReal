@@ -1,17 +1,95 @@
-<!doctype html>
-<html lang="en-US">
-
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>王君威</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 1 学习与实践报告</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    h2 { color: #34495e; margin-top: 30px; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 10px; }
+    code {
+      background-color: #f0f2f5;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: #d63384;
+    }
+    .img-placeholder {
+      background: #e9ecef;
+      border: 1px dashed #adb5bd;
+      padding: 20px;
+      text-align: center;
+      color: #6c757d;
+      border-radius: 4px;
+      margin: 15px 0;
+    }
+  </style>
 </head>
-
-
 <body>
-  <p> week1</p>
+
+<div class="container">
+  <h1>Week 1 学习与实践报告</h1>
+
+  <section>
+    <h2>概述</h2>
+    <p>本周主要围绕 Web 前端开发的基础（HTML、CSS、JavaScript）进行了系统学习，并以 MDN Web Docs 为主要参考资料。在掌握理论知识的同时，我将其直接应用于《从代码到实物》课程的实践环节，初步搭建了属于自己的个人主页（王君威的个人展示页）。</p>
+  </section>
+
+  <section>
+    <h2>1. HTML：构建网页的骨架</h2>
+    <p>HTML 是一种标记语言，它为网页提供了基本的结构和语义。在本周的学习中，我掌握了文档的基本组成部分，并将其应用到了 <code>index.html</code> 的编写中：</p>
+    <ul>
+      <li><strong>文档声明与元数据</strong>：在 <code>index.html</code> 的头部，正确配置了 <code>&lt;!doctype html&gt;</code> 声明，使用了 <code>&lt;meta charset="utf-8"&gt;</code> 确保中文字符正常显示，并通过 <code>&lt;meta name="viewport"&gt;</code> 标签为移动端适配打下基础。</li>
+      <li><strong>引入外部资源</strong>：学会了如何通过 <code>&lt;link&gt;</code> 标签引入外部的 CSS 样式表（如自建的 <code>style.css</code> 和 <code>card.css</code>），以及如何接入外部图标库（Font Awesome）来美化页面元素。</li>
+      <li><strong>语义化标签与元素</strong>：实际运用了多种 HTML 元素来组织内容。例如，使用 <code>&lt;h1&gt;</code> 和 <code>&lt;h2&gt;</code> 定义标题层级，使用 <code>&lt;p&gt;</code> 编写个人简介，使用 <code>&lt;img&gt;</code> 嵌入头像（并配置了 <code>alt</code> 属性以提升无障碍访问性），以及利用 <code>&lt;a&gt;</code> 标签实现博客、GitHub 页面和 Week 1 记录页面的跳转。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. CSS：赋予页面视觉美感</h2>
+    <p>如果说 HTML 是骨架，那么 CSS 就是网页的皮肤。本周我深入理解了 CSS 的核心概念，并为页面编写了美观且响应式的样式。</p>
+    <ul>
+      <li><strong>核心理论：盒模型</strong>：理解了 CSS 中“一切皆盒子”的概念，熟悉了 <code>margin</code>（外边距）、<code>border</code>（边框）、<code>padding</code>（内边距）和内容本身的关系。
+        <div class="img-placeholder"></div>
+      </li>
+      <li><strong>Flexbox 弹性布局</strong>：在 <code>style.css</code> 中，我为 <code>.container</code> 容器使用了 <code>display: flex;</code>。通过配置左侧头像区（<code>.image-section</code>）和右侧内容区（<code>.content-section</code>）的 <code>flex</code> 属性，实现了一个优雅的左右分栏布局。</li>
+      <li><strong>响应式设计 (RWD)</strong>：考虑到不同设备的浏览体验，我使用了媒体查询 <code>@media (max-width: 768px)</code>。当屏幕宽度缩小至移动端尺寸时，页面会自动隐藏中间的分割线（<code>.divider</code>），并将左右分栏平滑折叠为上下单栏布局。</li>
+      <li><strong>交互动效</strong>：在 <code>card.css</code> 中，利用 CSS 的伪类选择器 <code>:hover</code>，结合 <code>transition</code> 和 <code>transform: translateY(-2px)</code> 属性，为课程记录卡片添加了平滑的悬停上移与阴影效果，极大地提升了用户的交互体验。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. JavaScript：注入动态生命力</h2>
+    <p>虽然目前页面主要由 HTML 和 CSS 构成，但我也同步学习了 JavaScript 的基础语法，为后续的复杂交互做准备。</p>
+    <ul>
+      <li><strong>基础语法体系</strong>：学习了变量的声明（<code>let</code>, <code>const</code>）、数据类型、基本运算符以及函数的定义与调用。</li>
+      <li><strong>DOM 操作与事件监听</strong>：理解了如何通过 <code>document.querySelector()</code> 获取 HTML 元素，以及如何使用事件监听器（如 <code>onclick</code> 或 <code>addEventListener</code>）来捕获用户的操作（例如点击按钮或图片）。</li>
+      <li><strong>实践准备</strong>：在 <code>index.html</code> 的底部，我已经提前引入了 <code>&lt;script src="scripts/main.js"&gt;&lt;/script&gt;</code>。下一步，我计划利用 MDN 教程中的逻辑，在 <code>main.js</code> 中实现诸如“点击头像切换图片”或“基于 <code>localStorage</code> 的个性化欢迎语”等动态功能。</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>总结与展望</h2>
+    <p>第一周的学习让我成功跨出了“从代码到实物”的第一步。从零开始敲下每一行代码，看着网页从纯文本变成一个带有圆角、阴影和响应式布局的精美界面，充满成就感。接下来，我将继续完善 <code>main.js</code> 的逻辑，让这个静态页面真正“动”起来。</p>
+  </section>
+</div>
+
 </body>
-
-
 </html>
