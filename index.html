@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="zh-CN">
 
 <head>
   <meta charset="utf-8" />
@@ -9,40 +9,96 @@
   <link href="styles/card.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+  
+  <style>
+    /* 清除默认边距，确保全屏 */
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 首屏全屏大图容器 */
+    .hero-section {
+      height: 100vh; /* 100% 视口高度 */
+      background-image: url('image/mainpost.jpg');
+      background-size: cover; /* 图片等比例缩放铺满 */
+      background-position: center; /* 图片居中显示 */
+      position: relative;
+    }
+
+    /* 左下角文字区域 */
+    .bottom-left-text {
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+      color: white; /* 假设大图偏暗，使用白字。如果图亮可以改黑色 */
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6); /* 加点阴影防止看不清 */
+    }
+
+    .signature {
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .name {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* 下方的内容区 */
+    .content-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+  </style>
 </head>
 
-
 <body>
-  <div class="container">
-    <div class="image-section">
-      <img src="image/IMG_3309.JPG" alt="头像" />
-      <h1>王君威</h1>
-      <p>渴了会喝水</p>
-      <p>发现把脑子放在枕头上，眼睛闭上几个小时，会很舒服</p>
+  <div class="hero-section">
+    <div class="bottom-left-text">
+      <div class="signature">
+        发现把脑子放在枕头上，<br>
+        眼睛闭上几个小时，会很舒服
+      </div>
+      <div class="name">计算机茅班 王君威</div>
+    </div>
+  </div>
+
+  <div class="content-container">
+    <div class="social-links">
       <a href="https://blogs.goudaijun.top/" class="icon-link">
-        <i class="fa-solid fa-blog"></i>
-        Blogs
+        <i class="fa-solid fa-blog"></i> Blogs
       </a>
       <a href="https://github.com/JunWang666" class="icon-link">
-        <i class="fa-brands fa-github"></i>
-        Github
+        <i class="fa-brands fa-github"></i> Github
       </a>
     </div>
 
     <div class="divider"></div>
 
     <div class="content-section">
-      <h2> 课程记录</h2>
+      <h2>课程记录</h2>
       <a href="content/week1.html" class="card-link">
         <p class="card-title">Week1</p>
         <p class="card-desc">HTML Log</p>
       </a>
-      
-      
+      <a href="content/week5.html" class="card-link">
+        <p class="card-title">Week5</p>
+        <p class="card-desc">焊接实践</p>
+      </a>
     </div>
   </div>
-</body>
 
-<script src="scripts/main.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
 
 </html>

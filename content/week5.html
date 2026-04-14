@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5 焊接实践学习报告</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        h3 { color: #556b2f; margin-top: 20px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #d63384;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .tip {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .warning {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Week 5 焊接实践</h1>
+
+    <section>
+        <h2>概述</h2>
+        <p>本周主要学习了电子焊接技术，并通过焊接ESP32开发板进行了实践。焊接是电子制作中的一项基础技能，掌握好焊接技术对于后续的硬件开发项目非常重要。</p>
+    </section>
+
+    <section>
+        <h2>1. 焊接基础理论</h2>
+        
+        <h3>1.1 焊接原理</h3>
+        <p>焊接是通过加热使焊锡熔化，利用焊锡的润湿性在金属表面形成合金结合，从而实现电气连接和机械固定的过程。良好的焊点应该具备以下特征：</p>
+        <ul>
+            <li><strong>光滑明亮</strong>：焊点表面光泽，无氧化发黑现象</li>
+            <li><strong>润湿良好</strong>：焊锡充分覆盖焊盘和引脚，形成圆滑过渡</li>
+            <li><strong>无气泡</strong>：焊点内部无气孔，连接牢固</li>
+            <li><strong>适当高度</strong>：焊点高度约为焊盘宽度的1/3到1/2</li>
+        </ul>
+
+        <h3>1.2 常用焊锡材料</h3>
+        <ul>
+            <li><strong>有铅焊锡</strong>：传统锡铅合金（Sn63/Pb37），熔点183°C，焊接手感好但有毒</li>
+            <li><strong>无铅焊锡</strong>：常用SAC305（Sn96.5/Ag3/Cu0.5），熔点217-220°C，更环保</li>
+            <li><strong>焊锡丝直径</strong>：常见0.5mm、0.8mm、1.0mm等，初学者建议使用0.8mm</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>2. 焊接工具与设备</h2>
+        
+        <h3>2.1 电烙铁</h3>
+        <p>电烙铁是焊接的主要工具，分为以下几种：</p>
+        <ul>
+            <li><strong>外热式电烙铁</strong>：加热元件在烙铁头外部，升温慢但耐用性好</li>
+            <li><strong>内热式电烙铁</strong>：加热元件在烙铁头内部，升温快，热效率高</li>
+            <li><strong>温控��烙铁</strong>：可调节温度，适合不同焊接需求，推荐使用</li>
+        </ul>
+
+        <h3>2.2 热风枪</h3>
+        <p>热风枪主要用于拆焊和贴片元件焊接：</p>
+        <ul>
+            <li><strong>贴片拆焊</strong>：加热使焊锡熔化，轻松取下元件</li>
+            <li><strong>贴片焊接</strong>：对准元件位置加热固定</li>
+            <li><strong>温度设置</strong>：一般设置300-350°C</li>
+        </ul>
+
+        <h3>2.3 辅助工具</h3>
+        <ul>
+            <li><strong>烙铁架</strong>：放置电烙铁，防止烫伤</li>
+            <li><strong>助焊剂</strong>：松香或专用助焊剂，提高润湿性</li>
+            <li><strong>吸锡带</strong>：用于清除多余焊锡</li>
+            <li><strong>镊子</strong>：夹取元件，尖端需要防磁</li>
+            <li><strong>防静电手环</strong>：防止静电损坏元器件</li>
+        </ul>
+
+        <div class="tip">
+            <strong>小贴士</strong>：新烙铁首次使用前，需要对烙铁头进行镀锡处理，即在加热后沾上一层焊锡保护烙铁头。
+        </div>
+    </section>
+
+    <section>
+        <h2>3. ESP32 开发板焊接</h2>
+        
+        <h3>3.1 ESP32 简介</h3>
+        <p>ESP32 是乐鑫科技推出的低功耗 Wi-Fi + Bluetooth 双模物联网芯片，采用双核处理器，支持 Wi-Fi 和 BLE 通信，是物联网开发的热门选择。</p>
+
+        <h3>3.2 焊接内容</h3>
+        <p>本次焊接实践主要包括：</p>
+        <ul>
+            <li><strong>排针焊接</strong>：焊接2.54mm间距排针，用于GPIO引脚扩展</li>
+            <li><strong>IC座焊接</strong>：焊接芯片座（可选），方便更换芯片</li>
+            <li><strong>电源接口</strong>：焊接DC电源座或USB接口</li>
+        </ul>
+
+        <h3>3.3 焊接步骤</h3>
+        <ul>
+            <li><strong>第一步：准备工作</strong>：将排针插入开发板孔位，板子反面用高温胶带或夹具固定</li>
+            <li><strong>第二步：预热</strong>：电烙铁预热到合适温度（有铅焊锡约280°C，无铅焊锡约350°C）</li>
+            <li><strong>第三步：焊接引脚</strong>：烙铁头沾少量焊锡，对准引脚和焊盘，接触2-3秒后焊锡自动流淌覆盖</li>
+            <li><strong>第四步：检查</strong>：检查每个焊点是否饱满光亮，如有虚焊需要重新焊接</li>
+            <li><strong>第五步：清理</strong>：使用酒精棉签清洁焊点周围残留的松香</li>
+        </ul>
+
+        <div class="warning">
+            <strong>注意</strong>：ESP32芯片工作电压为3.3V，切勿接反或接错电压，否则会烧毁芯片。焊接时注意静电防护。
+        </div>
+    </section>
+
+    <section>
+        <h2>4. 常见问题与解决</h2>
+        
+        <h3>4.1 虚焊</h3>
+        <p>焊点看似覆盖但实际未形成良好合金结合，通常是因为加热时间不足或温度不够。</p>
+        <ul>
+            <li><strong>表现</strong>：焊点表面暗淡、粗糙，可能一触即落</li>
+            <li><strong>解决</strong>：重新加热，确保焊锡充分熔化并润湿焊盘</li>
+        </ul>
+
+        <h3>4.2 桥连</h3>
+        <p>两个相邻焊点被焊锡连接在一起，造成短路。</p>
+        <ul>
+            <li><strong>表现</strong>：焊点之间有多余焊锡连接</li>
+            <li><strong>解决</strong>：使用吸锡带或加大量助焊剂，用烙铁将多余焊锡吸走</li>
+        </ul>
+
+        <h3>4.3 焊盘脱落</h3>
+        <p>操作不当导致PCB上的焊盘脱落。</p>
+        <ul>
+            <li><strong>原因</strong>：加热时间过长或用力拉扯</li>
+            <li><strong>解决</strong>：使用时避免长时间加热一个位置，用镊子辅助固定元件</li>
+        </ul>
+
+        <div class="tip">
+            <strong>小贴士</strong>：焊接时采用"三秒原则"——烙铁头接触焊点的时间不宜超过3秒，如果一次未焊接成功，冷却后再尝试。
+        </div>
+    </section>
+
+    <section>
+        <h2>5. 焊接安全注意事项</h2>
+        <ul>
+            <li><strong>防烫伤</strong>：烙铁头温度很高，焊接时不要触碰，摆放时放入烙铁架</li>
+            <li><strong>防吸入烟气</strong>：焊接会产生有害烟气，建议在通风处操作或使用排烟设备</li>
+            <li><strong>防静电</strong>：焊接IC时佩戴防静电手环，注意接地</li>
+            <li><strong>防火</strong>：焊锡丝和烙铁使用时远离易燃物品</li>
+            <li><strong>护眼</strong>：焊接时佩戴护目镜，防止飞溅伤害眼睛</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>总结与展望</h2>
+        <div class="highlight">
+            <p>通过本周的焊接学习，我掌握了电烙铁和热风枪的使用方法，成功焊接了ESP32开发板的排针。从最初的紧张到现在的熟练，深刻体会到"熟能生巧"的道理。焊接是一项需要不断练习的技能，只有通过大量的实践才能做到得心应手。</p>
+            <p>接下来，我计划继续深入学习贴片元件的焊接技术，为后续的PCB设计和焊接打下基础。同时，也会尝试焊接一些更复杂的模块，如传感器、显示屏等。</p>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

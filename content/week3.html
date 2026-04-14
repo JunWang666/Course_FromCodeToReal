@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 Bambu Studio 学习报告</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        h3 { color: #556b2f; margin-top: 20px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #d63384;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .tip {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Week 3/4 Bambu Studio</h1>
+
+    <section>
+        <h2>概述</h2>
+        <p>本周主要围绕 Bambu Lab（拓竹科技）的 3D 打印软件生态进行了系统学习。Bambu Lab 是近年来快速崛起的消费级 3D 打印机品牌，其自研的 Bambu Studio 软件功能强大、使用体验流畅。本周我学习了如何使用 Bambu Studio 进行模型切片、参数设置以及无线打印。</p>
+    </section>
+
+    <section>
+        <h2>1. Bambu Lab 生态系统介绍</h2>
+        <p>Bambu Lab 提供了一套完整的 3D 打印软件生态，包括：</p>
+        <ul>
+            <li><strong>Bambu Studio</strong>：功能丰富的切片软件，支持模型导入、切片预览、参数调优和无线打印</li>
+            <li><strong>Bambu Handy</strong>：移动端 APP，可在手机上监控打印进度和控制打印机</li>
+            <li><strong>Bambu Connect</strong>：精简工具，用于连接打印机并发送打印任务</li>
+            <li><strong>Bambu Suite</strong>：支持激光切割、刀切等多种工艺的制作软件</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>2. Bambu Studio 基础入门</h2>
+        
+        <h3>2.1 软件界面与主要功能</h3>
+        <p>Bambu Studio 是基于 PrusaSlicer 开发的专业切片软件，具有以下核心特点：</p>
+        <ul>
+            <li><strong>基于项目的workflow</strong>：采用 3MF 项目格式，支持多盘打印和资源管理</li>
+            <li><strong>Wi-Fi 无线传输</strong>：支持通过局域网直接向打印机发送打印任务</li>
+        </ul>
+
+        <h3>2.2 基本操作流程</h3>
+        <p>使用 Bambu Studio 进行打印的完整流程：</p>
+        <ul>
+            <li><strong>导入模型</strong>：支持 STL、3MF、STEP 等多种格式，可直接从模型库拖入</li>
+            <li><strong>选择打印机和耗材</strong>：在左侧面板选择正确的打印机型号、托盘类型和线材类型</li>
+            <li><strong>模型摆放与调整</strong>：使用变换工具对模型进行移动、旋转、缩放操作</li>
+            <li><strong>切片预览</strong>：点击"Slice Plate"按钮，等待切片完成，可查看分层预览</li>
+            <li><strong>发送打印</strong>：点击"Print"按钮，选择打印机，确认后开始打印</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>3. 关键参数设置</h2>
+        
+        <h3>3.1 打印参数</h3>
+        <ul>
+            <li><strong>层高</strong>：影响打印精度和质量，常见设置有 0.2mm（标准）、0.16mm（精细）、0.28mm（快速）</li>
+            <li><strong>打印速度</strong>： Bambu 打印机支持高速打印，可在"Speed"选项中调整</li>
+            <li><strong>支撑结构</strong>：对于悬空部分需要添加支撑，可选择 tree support 或 line support</li>
+            <li><strong>填充率</strong>：一般设置 15%-25% 即可，过高会浪费材料且影响打印速度</li>
+        </ul>
+
+        <h3>3.2 耗材设置</h3>
+        <p>Bambu Studio 针对不同材料提供了精细的冷却控制参数：</p>
+        <ul>
+            <li><strong>PLA</strong>：推荐打印温度 200-220°C，床温 45-60°C</li>
+            <li><strong>ABS</strong>：需要更高的打印温度（230-250°C）和加热床（90-100°C），注意通风</li>
+            <li><strong>PETG</strong>：打印温度 230-250°C，床温 70-80°C</li>
+            <li><strong>TPU</strong>：柔性材料，需要较低的打印速度</li>
+        </ul>
+
+        <div class="tip">
+            <strong>小贴士</strong>：Bambu Studio 内置了针对 Bambu 耗材的预设参数，首次使用时建议直接使用官方推荐值，待熟悉后再进行自定义调整。
+        </div>
+    </section>
+
+    <section>
+        <h2>4. 无线打印体验</h2>
+        <p>Bambu Studio 支持通过 Wi-Fi 直接向打印机发送任务，无需 SD 卡：</p>
+        <ul>
+            <li><strong>局域网连接</strong>：确保电脑和打印机连接在同一 Wi-Fi 网络下</li>
+            <li><strong>打印机绑定</strong>：在软件中添加打印机，输入打印机屏幕显示的配对码</li>
+            <li><strong>实时监控</strong>：打印过程中可在"Printer"标签页查看打印进度、剩余时间、温度曲线</li>
+            <li><strong>远程控制</strong>：支持暂停、恢复、终止打印，以及调整打印速度</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>5. 实践中的问题与解决</h2>
+        <p>学习过程中遇到的一些常见问题：</p>
+        <ul>
+            <li><strong>模型导入失败</strong>：检查文件格式是否支持，尝试重新导出 STL 格式</li>
+            <li><strong>切片时间过长</strong>：对于复杂模型，可先在"Preview"中检查是否存在悬空区域，添加合适的支撑</li>
+            <li><strong>打印机无法连接</strong>：检查 Wi-Fi 信号，确保网络畅通；确认固件版本为最新</li>
+            <li><strong>打印粘附不牢</strong>：清洁打印床表面，尝试启用" Brim "（边缘）或调整床温</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>总结与展望</h2>
+        <div class="highlight">
+            <p>通过本周对 Bambu Studio 的学习，我掌握了使用专业切片软件进行 3D 打印的完整流程。从模型导入、参数设置到无线打印，每一个环节都体现了软件的人性化设计。Bambu Studio 将复杂的切片算法封装在简洁的界面之下，让初学者也能快速上手 3D 打印。</p>
+            <p>接下来，我计划实际动手打印一些实用的小物件，如手机支架、收纳盒等，进一步熟悉软件的各种高级功能，如多色打印、变层高、智能冷却等。</p>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

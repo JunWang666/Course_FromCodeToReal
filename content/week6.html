@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 ESP32开发学习</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        h3 { color: #556b2f; margin-top: 20px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #d63384;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .tip {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Week 6 lolin_s2_mini开发</h1>
+
+    <section>
+        <h2>概述</h2>
+        <p>本周主要学习了lolin_s2_mini开发板的编程和基础外设使用。由于之前有ESP32开发经验，本次学习以快速上手为主。</p>
+    </section>
+
+    <section>
+        <h2>1. lolin_s2_mini 简介</h2>
+        <p>lolin_s2_mini是基于ESP32-S2芯片的开发板，特点如下：</p>
+        <ul>
+            <li><strong>单核处理器</strong>：Xtensa LX7，主频可达240MHz</li>
+            <li><strong>无线通信</strong>：支持Wi-Fi 802.11 b/g/n（注意：ESP32-S2不支持蓝牙）</li>
+            <li><strong>丰富外设</strong>：GPIO、UART、SPI、I2C、ADC、DAC等</li>
+            <li><strong>工作电压</strong>：3.3V</li>
+            <li><strong>小尺寸</strong>：非常适合小型项目</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>2. 开发环境搭建</h2>
+        
+        <h3>2.1 CLion + PlatformIO</h3>
+        <p>使用CLion配合PlatformIO插件开发ESP32非常便捷：</p>
+        <ul>
+            <li>在CLion中安装PlatformIO插件</li>
+            <li>创建新项目时选择ESP32开发板</li>
+            <li>配置<code>platformio.ini</code>指定开发板型号（如<code>lolin_s2_mini</code>）</li>
+            <li>自动下载工具链和SDK，无需手动配置</li>
+        </ul>
+
+        <h3>2.2 项目结构</h3>
+        <pre><code>project/
+├── src/
+│   └── main.cpp       // 源代码
+├── include/
+│   └── main.h         // 头文件
+├── test/              // 测试文件
+└── platformio.ini    // 项目配置</code></pre>
+    </section>
+
+    <section>
+        <h2>3. 基础外设编程</h2>
+        
+        <h3>3.1 GPIO控制</h3>
+        <p>使用Arduino风格：</p>
+        <pre><code>pinMode(LED_BUILTIN, OUTPUT);
+digitalWrite(LED_BUILTIN, HIGH);  // LED灭
+digitalWrite(LED_BUILTIN, LOW);   // LED亮</code></pre>
+
+        <h3>3.2 Wi-Fi连接</h3>
+        <pre><code>WiFi.begin("SSID", "password");
+while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+}</code></pre>
+
+        <h3>3.3 蓝牙BLE</h3>
+        <p>使用ESP32 BLE库可以快速实现蓝牙设备功能，如信标、串口透传等。</p>
+
+        <div class="tip">
+            <strong>小贴士</strong>：ESP32有两个核心，可以利用双核特性分离Wi-Fi处理和业务逻辑，提高系统响应速度。
+        </div>
+    </section>
+
+    <section>
+        <h2>总结</h2>
+        <div class="highlight">
+            <p>ESP32-S2是一款性价比极高的物联网芯片，相比原版去除了蓝牙但增加了更多GPIO和USB OTG支持。由于之前有一定基础，本周主要梳理了开发流程并完成了几个小项目。</p>
+            <p>后续计划深入学习ESP-IDF框架，实现更复杂的功能。</p>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
