@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCB设计学习</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        h3 { color: #556b2f; margin-top: 20px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        code {
+            background-color: #f0f2f5;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #d63384;
+        }
+        .highlight {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .tip {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>PCB设计学习</h1>
+
+    <section>
+        <h2>概述</h2>
+        <p>本周重点学习了PCB（印制电路板）设计。将电路原理转化为实际的物理板材，并尝试将硬件工程与艺术设计结合，制作了专属的文创PCB，同时完成了指定电路板的复刻任务。</p>
+    </section>
+
+<section>
+        <h2>概述</h2>
+        <p>本周进入了硬件开发的关键环节——PCB（印制电路板）设计的学习。课程完成了从理论到工程实践的跨越，不仅要求掌握将抽象的电路原理图转化为物理板卡的工程方法，还需要在受限的二维/三维空间中权衡电气性能、机械结构与工艺成本。本周通过“全流程理论学习”、“个性化校庆文创板卡设计”以及“经典电路板精密复刻”三大核心任务，建立起了完整的硬件开发思维。</p>
+    </section>
+
+    <section>
+        <h2>1. PCB设计核心流程与工程规范</h2>
+        <p>现代PCB设计是一项高度专业化的工业流程，本周课程深入解析了以下核心环节的技术内涵：</p>
+        <ul>
+            <li>
+                <strong>原理图设计与电气规则检查</strong>：
+                原理图是电路逻辑的具象化表达。在此阶段，不仅要正确连接器件引脚、构建清晰的层次化网格，还必须严格执行电气规则检查。重点排查了悬空引脚、驱动冲突以及网络标签拼写错误等隐患，确保逻辑网表的绝对正确。
+            </li>
+            <li>
+                <strong>元器件选型与封装精细匹配</strong>：
+                确立逻辑关系后，需将电气符号映射为真实的物理实体。课程学习了如何解读元器件数据手册，重点理解了插装元件与贴片元件的工艺差异。设计中必须严格校对引脚间距、焊盘尺寸以及机械外形轮廓，防止打样后因封装误差导致元件无法焊接。
+            </li>
+            <li>
+                <strong>模块化布局与信号完整性初探</strong>：
+                布局决定了PCB性能的上限。实践中遵循“先大后小、先主后次、模块化布局”的原则。优先放置核心微控制器与核心接插件，再以模块为单位聚集外围电路。
+                同时引入了信号完整性与抗干扰考量：强电与弱电分离、数字基带与模拟信号分区；去耦电容必须严格紧贴微控制器的电源引脚放置，以最大限度滤除高频噪声。
+            </li>
+            <li>
+                <strong>多层布线策略与设计规则检查</strong>：
+                布线是实现电气连接的实体化过程。本周重点训练了双层板的布线技巧。针对电源线与地线，依据电流载流量设定较宽的线宽（如20mil-30mil），而普通信号线则采用常规线宽（如8mil-10mil）；布线严格禁止走90°直角，统一采用135°折线或圆弧过渡，以避免高频信号下的阻抗突变与电磁辐射。
+                布线结束后，通过设定合理的安全间距和线宽限制，运行设计规则检查（DRC），实现软件层面的“零报错”。
+            </li>
+            <li>
+                <strong>大面积覆铜与地平面优化</strong>：
+                为增强电路的抗干扰能力并降低回路阻抗，页面设计尾声对空闲区域进行了大面积网络覆铜（通常连接至GND）。合理的覆铜能够起到良好的电磁屏蔽作用，并显著提升散热效率。
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>2. 文创PCB设计展示</h2>
+        <p>利用所学的PCB布线与丝印技巧，我结合西南交通大学130周年校庆的主题元素，将Logo等视觉设计融入到了板卡外形和走线中。通过阻焊层开窗和走线布局，让电路板本身成为了一件具有纪念意义的艺术品。</p>
+        
+        <div class="gallery">
+            <img src="../image/屏幕截图 2026-05-08 013034.png" alt="文创设计展示图 1">
+            <img src="../image/屏幕截图 2026-05-08 012742.png" alt="文创设计展示图 2">
+            <img src="../image/屏幕截图 2026-05-08 014347.png" alt="文创设计展示图 3">
+            <img src="../image/F1A11D822420413FF64D5112174CA447.png" alt="打出来了">
+        </div>
+
+        <div class="tip">
+            在这个设计中，利用阻焊层大面积挖空来露出玻璃纤维基板的纹理，形成独特的视觉效果。同时，在原本图案里反光部分设计成了不透明并且在背面加入了灯珠，让光从两侧半透明部分透出来。
+        </div>
+    </section>
+
+    <section>
+        <h2>3. 作业2：电路板复刻展示</h2>
+        <p>除文创设计外，本周还完成了作业2的电路板复刻任务。以下为复刻电路板的布局与布线设计图：</p>
+        
+        <div class="gallery">
+            <img src="../image/屏幕截图 2026-05-13 152323.png" alt="作业2复刻电路板图 1">
+            <img src="../image/屏幕截图 2026-05-13 152314.png" alt="作业2复刻电路板图 2">
+        </div>
+    </section>
+
+    <section>
+        <h2>总结</h2>
+        <div class="highlight">
+            <p>PCB设计不仅是严谨的硬件工程，也可以是充满创意的表达方式。通过这次校庆文创产品的设计以及作业2的复刻练习，熟练掌握了EDA软件的操作，也对制造工艺有了更直观的认识。</p>
+            <p>下一步计划完成这批板子的打样并进行实物验证。</p>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
